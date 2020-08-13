@@ -107,7 +107,7 @@ func resourceRancherStackCreate(d *schema.ResourceData, meta interface{}) error 
 		Pending:    []string{"activating", "active", "removed", "removing"},
 		Target:     []string{"active"},
 		Refresh:    StackStateRefreshFunc(client, newStack.Id),
-		Timeout:    10 * time.Minute,
+		Timeout:    30 * time.Minute,
 		Delay:      1 * time.Second,
 		MinTimeout: 3 * time.Second,
 	}
@@ -217,7 +217,7 @@ func resourceRancherStackUpdate(d *schema.ResourceData, meta interface{}) error 
 		Pending:    []string{"active", "active-updating", "upgrading"},
 		Target:     []string{"active"},
 		Refresh:    StackStateRefreshFunc(client, newStack.Id),
-		Timeout:    10 * time.Minute,
+		Timeout:    30 * time.Minute,
 		Delay:      1 * time.Second,
 		MinTimeout: 3 * time.Second,
 	}
@@ -256,7 +256,7 @@ func resourceRancherStackUpdate(d *schema.ResourceData, meta interface{}) error 
 			Pending:    []string{"active", "upgrading", "upgraded"},
 			Target:     []string{"upgraded"},
 			Refresh:    StackStateRefreshFunc(client, stack.Id),
-			Timeout:    10 * time.Minute,
+			Timeout:    30 * time.Minute,
 			Delay:      1 * time.Second,
 			MinTimeout: 3 * time.Second,
 		}
@@ -278,7 +278,7 @@ func resourceRancherStackUpdate(d *schema.ResourceData, meta interface{}) error 
 				Pending:    []string{"active", "upgraded", "finishing-upgrade"},
 				Target:     []string{"active"},
 				Refresh:    StackStateRefreshFunc(client, stack.Id),
-				Timeout:    10 * time.Minute,
+				Timeout:    30 * time.Minute,
 				Delay:      1 * time.Second,
 				MinTimeout: 3 * time.Second,
 			}
@@ -325,7 +325,7 @@ func resourceRancherStackDelete(d *schema.ResourceData, meta interface{}) error 
 		Pending:    []string{"active", "removed", "removing"},
 		Target:     []string{"removed"},
 		Refresh:    StackStateRefreshFunc(client, id),
-		Timeout:    10 * time.Minute,
+		Timeout:    30 * time.Minute,
 		Delay:      1 * time.Second,
 		MinTimeout: 3 * time.Second,
 	}
