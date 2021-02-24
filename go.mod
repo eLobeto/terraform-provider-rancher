@@ -1,6 +1,6 @@
 module github.com/terraform-providers/terraform-provider-rancher
 
-go 1.14
+go 1.16
 
 require (
 	github.com/Sirupsen/logrus v0.0.0-20170608221441-85b1699d5056 // indirect
