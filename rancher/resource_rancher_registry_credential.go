@@ -78,7 +78,7 @@ func resourceRancherRegistryCredentialCreate(d *schema.ResourceData, meta interf
 	}
 
 	stateConf := &resource.StateChangeConf{
-		Pending:    []string{"active", "removed", "removing"},
+		Pending:    []string{"active", "removed", "removing", "activating"},
 		Target:     []string{"active"},
 		Refresh:    RegistryCredentialStateRefreshFunc(client, newRegistryCredential.Id),
 		Timeout:    10 * time.Minute,
